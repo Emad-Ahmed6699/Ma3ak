@@ -1,5 +1,6 @@
 
 using Ma3ak.Api.Data;
+using Ma3ak.Api.Services.Auth;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -19,6 +20,7 @@ namespace Ma3ak.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IAuthService, AuthService>();
 
             var app = builder.Build();
 
