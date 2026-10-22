@@ -19,5 +19,7 @@ namespace Ma3ak.Api.Entities
         public List<Post> Posts { get; set; } = new();
         public List<Follow> Followers { get; set; } = new();  // اللي بيتابعوني
         public List<Follow> Following { get; set; } = new();  // اللي أنا بتابعهم
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiryTime { get; set; }
     }
 }

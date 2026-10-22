@@ -3,15 +3,15 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Mail, 
-  Lock, 
-  Eye, 
-  EyeOff, 
-  ArrowRight, 
-  User as UserIcon, 
-  CheckCircle2, 
-  AlertCircle 
+import {
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  ArrowRight,
+  User as UserIcon,
+  CheckCircle2,
+  AlertCircle
 } from "lucide-react";
 import { useAuthStore } from "@/lib/auth-store";
 import { api } from "@/lib/api";
@@ -118,7 +118,7 @@ export function AuthForm({ initialTab = "login" }: AuthFormProps) {
     } catch (err: any) {
       setErrorMsg(
         err.response?.data?.message ||
-          "Authentication failed. Please check your credentials."
+        "Authentication failed. Please check your credentials."
       );
     } finally {
       setLoading(false);
@@ -136,9 +136,8 @@ export function AuthForm({ initialTab = "login" }: AuthFormProps) {
               setTab("login");
               setErrorMsg(null);
             }}
-            className={`relative z-10 flex-1 py-2 text-xs sm:text-sm font-semibold transition-colors ${
-              tab === "login" ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
-            }`}
+            className={`relative z-10 flex-1 py-2 text-xs sm:text-sm font-semibold transition-colors ${tab === "login" ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
+              }`}
           >
             Sign In
             {tab === "login" && (
@@ -155,9 +154,8 @@ export function AuthForm({ initialTab = "login" }: AuthFormProps) {
               setTab("register");
               setErrorMsg(null);
             }}
-            className={`relative z-10 flex-1 py-2 text-xs sm:text-sm font-semibold transition-colors ${
-              tab === "register" ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
-            }`}
+            className={`relative z-10 flex-1 py-2 text-xs sm:text-sm font-semibold transition-colors ${tab === "register" ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
+              }`}
           >
             Create Account
             {tab === "register" && (

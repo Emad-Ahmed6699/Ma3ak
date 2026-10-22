@@ -21,22 +21,24 @@ public class AuthService : IAuthService
 
     public async Task<AuthResponseDto> LoginAsync(UserLoginDto loginDto)
     {
-        // 1. ندور على اليوزر بالإيميل
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginDto.Email);
 
-        // لو مش موجود أو الباسورد غلط (بنخليهم نفس الرسالة لأسباب أمنية عشان الهاكرز)
         if (user == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, user.PasswordHash))
-        {
             throw new Exception("البريد الإلكتروني أو كلمة المرور غير صحيحة.");
-        }
 
-        // 2. نطبع الكارنيه (Token)
+        // توليد التوكنز
         string token = GenerateJwtToken(user);
+        string refreshToken = GenerateRefreshToken();
 
-        // 3. نرجع النتيجة
+        // حفظ الريفريش توكن في الداتا بيز لمدة 7 أيام
+        user.RefreshToken = refreshToken;
+        user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+        await _context.SaveChangesAsync();
+
         return new AuthResponseDto
         {
             Token = token,
+            RefreshToken = refreshToken,
             User = new UserReturnDto
             {
                 Id = user.Id,
@@ -60,18 +62,26 @@ public class AuthService : IAuthService
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Email, user.Email),
-            new Claim(JwtRegisteredClaimNames.Name, user.Username)
+            new Claim(JwtRegisteredClaimNames.Name, user.Username),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
         var token = new JwtSecurityToken(
             issuer: jwtSettings["Issuer"],
             audience: jwtSettings["Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddDays(double.Parse(jwtSettings["DurationInDays"]!)),
+            expires: DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["DurationInMinutes"]!)),
             signingCredentials: creds
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+    private string GenerateRefreshToken()
+    {
+        var randomNumber = new byte[32];
+        using var rng = System.Security.Cryptography.RandomNumberGenerator.Create();
+        rng.GetBytes(randomNumber);
+        return Convert.ToBase64String(randomNumber);
     }
 
     public async Task<UserReturnDto> RegisterAsync(UserRegisterDto userDto)
@@ -108,6 +118,40 @@ public class AuthService : IAuthService
             Username = user.Username,
             Email = user.Email,
             CreatedAt = user.CreatedAt
+        };
+    }
+    public async Task<AuthResponseDto> RefreshTokenAsync(TokenRequestDto requestDto)
+    {
+        // ندور على اليوزر اللي معاه الريفريش توكن ده
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.RefreshToken == requestDto.RefreshToken);
+
+        // لو مش موجود أو التوكن وقته خلص (عدى الـ 7 أيام)
+        if (user == null || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
+        {
+            throw new Exception("انتهت الجلسة، يرجى تسجيل الدخول مرة أخرى.");
+        }
+
+        // لو سليم، نولدله توكنز جديدة
+        string newToken = GenerateJwtToken(user);
+        string newRefreshToken = GenerateRefreshToken();
+
+        // نحدث الداتا بيز
+        user.RefreshToken = newRefreshToken;
+        user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+        await _context.SaveChangesAsync();
+
+        return new AuthResponseDto
+        {
+            Token = newToken,
+            RefreshToken = newRefreshToken,
+            User = new UserReturnDto
+            {
+                Id = user.Id,
+                FullName = user.FullName,
+                Username = user.Username,
+                Email = user.Email,
+                CreatedAt = user.CreatedAt
+            }
         };
     }
 }

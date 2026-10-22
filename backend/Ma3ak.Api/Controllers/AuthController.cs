@@ -45,4 +45,17 @@ public class AuthController : ControllerBase
             return Unauthorized(new { message = ex.Message }); // 401 Unauthorized
         }
     }
+    [HttpPost("refresh-token")]
+    public async Task<IActionResult> RefreshToken([FromBody] TokenRequestDto requestDto)
+    {
+        try
+        {
+            var result = await _authService.RefreshTokenAsync(requestDto);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return Unauthorized(new { message = ex.Message });
+        }
+    }
 }
