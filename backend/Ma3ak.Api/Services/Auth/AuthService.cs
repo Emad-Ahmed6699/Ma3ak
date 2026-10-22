@@ -3,20 +3,23 @@ using Ma3ak.Api.Data;
 using Ma3ak.Api.DTOs.Users;
 using Ma3ak.Api.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens; // ضروري للتوكن
-using System.IdentityModel.Tokens.Jwt; // ضروري للتوكن
-using System.Security.Claims; // ضروري للتوكن
-using System.Text; // ضروري للتوكن
+using Microsoft.IdentityModel.Tokens; 
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims; 
+using System.Text; 
+using Microsoft.Extensions.Options; 
+using Ma3ak.Api.Settings;
 namespace Ma3ak.Api.Services.Auth;
 
 public class AuthService : IAuthService
 {
     private readonly ApplicationDbContext _context;
     private readonly IConfiguration _configuration;
-    public AuthService(ApplicationDbContext context,IConfiguration configuration)
+    private readonly JwtSettings _jwtSettings;
+    public AuthService(ApplicationDbContext context, IOptions<JwtSettings> jwtSettings)
     {
         _context = context;
-        _configuration = configuration;
+        _jwtSettings = jwtSettings.Value;
     }
 
     public async Task<AuthResponseDto> LoginAsync(UserLoginDto loginDto)
@@ -53,8 +56,8 @@ public class AuthService : IAuthService
     // دالة خاصة (Private) وظيفتها بس تطبع الـ Token
     private string GenerateJwtToken(User user)
     {
-        var jwtSettings = _configuration.GetSection("Jwt");
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         // البيانات اللي هتتختم جوه التوكن (زي الـ ID والإيميل)
@@ -67,12 +70,12 @@ public class AuthService : IAuthService
         };
 
         var token = new JwtSecurityToken(
-            issuer: jwtSettings["Issuer"],
-            audience: jwtSettings["Audience"],
-            claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["DurationInMinutes"]!)),
-            signingCredentials: creds
-        );
+             issuer: _jwtSettings.Issuer,
+             audience: _jwtSettings.Audience,
+             claims: claims,
+             expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurationInMinutes),
+             signingCredentials: creds
+          );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
