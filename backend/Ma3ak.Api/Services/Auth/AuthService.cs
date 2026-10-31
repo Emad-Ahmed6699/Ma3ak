@@ -123,8 +123,43 @@ public class AuthService : IAuthService
             CreatedAt = user.CreatedAt
         };
     }
+    private ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
+    {
+        var tokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = _jwtSettings.Issuer,
+            ValidAudience = _jwtSettings.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key)),
+            ValidateLifetime = true     // نتجاهل وقت الانتهاء لأننا نعلم أنه منتهي أصلاً
+        };
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+
+        if (securityToken is not JwtSecurityToken jwtSecurityToken ||
+            !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+        {
+            throw new SecurityTokenException("التوكن غير صالح.");
+        }
+
+        return principal;
+    }
     public async Task<AuthResponseDto> RefreshTokenAsync(TokenRequestDto requestDto)
     {
+
+
+        // 1. استخراج بيانات المستخدم من التوكن القديم المنتهي
+        var principal = GetPrincipalFromExpiredToken(requestDto.Token);
+        var userIdString = principal.FindFirstValue(ClaimTypes.NameIdentifier)
+                           ?? principal.FindFirstValue(JwtRegisteredClaimNames.Sub);
+
+        if (!int.TryParse(userIdString, out int userId))
+            throw new Exception("بيانات التوكن غير صالحة.");
+
+
         // ندور على اليوزر اللي معاه الريفريش توكن ده
         var user = await _context.Users.FirstOrDefaultAsync(u => u.RefreshToken == requestDto.RefreshToken);
 
@@ -155,6 +190,40 @@ public class AuthService : IAuthService
                 Email = user.Email,
                 CreatedAt = user.CreatedAt
             }
+        };
+    }
+    public async Task<bool> RevokeTokenAsync(string refreshToken)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+
+        if (user == null)
+            return false; // التوكن مش موجود أصلاً
+
+        // مسح التوكن ووقت انتهائه من الداتا بيز
+        user.RefreshToken = null;
+        user.RefreshTokenExpiryTime = null;
+
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
+    public async Task<UserReturnDto?> GetMeAsync(int userId)
+    {
+        var user = await _context.Users.FindAsync(userId);
+
+        if (user == null)
+            return null;
+
+        return new UserReturnDto
+        {
+            Id = user.Id,
+            FullName = user.FullName,
+            Username = user.Username,
+            Email = user.Email,
+            CreatedAt = user.CreatedAt,
+            Bio = user.Bio,
+            ProfilePictureUrl = user.AvatarUrl
+
         };
     }
 }

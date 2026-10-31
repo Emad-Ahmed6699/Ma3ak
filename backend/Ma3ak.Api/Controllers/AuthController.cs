@@ -1,6 +1,10 @@
-﻿using Ma3ak.Api.DTOs.Users;
+﻿using Ma3ak.Api.DTOs;
+using Ma3ak.Api.DTOs.Users;
 using Ma3ak.Api.Services.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace Ma3ak.Api.Controllers;
 
@@ -57,5 +61,32 @@ public class AuthController : ControllerBase
         {
             return Unauthorized(new { message = ex.Message });
         }
+    }
+    [HttpPost("revoke")]
+    public async Task<IActionResult> Revoke([FromBody] RevokeTokenDto request)
+    {
+        var result = await _authService.RevokeTokenAsync(request.RefreshToken);
+
+        if (!result)
+            return BadRequest(new { message = "التوكن غير صالح أو تم تسجيل الخروج مسبقاً." });
+
+        return Ok(new { message = "تم تسجيل الخروج بنجاح وتم إبطال الجلسة." });
+    }
+    [Authorize] // إجباري يكون مسجل دخول ومعاه توكن سليم
+    [HttpGet("me")]
+    public async Task<IActionResult> GetMe()
+    {
+        // استخراج الـ ID من التوكن (الـ Claims اللي عملناها وقت إنشاء التوكن)
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+
+        if (!int.TryParse(userIdString, out int userId))
+            return Unauthorized(new { message = "توكن غير صالح." });
+
+        var user = await _authService.GetMeAsync(userId);
+
+        if (user == null)
+            return NotFound(new { message = "المستخدم غير موجود." });
+
+        return Ok(user);
     }
 }

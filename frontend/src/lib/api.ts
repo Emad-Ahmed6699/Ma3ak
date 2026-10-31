@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://localhost:7001/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://localhost:7067/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -22,10 +22,9 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401 && typeof window !== "undefined") {
       localStorage.removeItem("token");
-      // Optional: window.location.href = "/auth/login";
     }
     return Promise.reject(error);
   }
 );
 
-export default api;
+export default api; 

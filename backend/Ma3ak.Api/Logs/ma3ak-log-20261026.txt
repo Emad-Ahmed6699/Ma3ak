@@ -1,0 +1,798 @@
+2026-10-26 15:21:14.654 +03:00 [INF] Now listening on: https://localhost:7067
+2026-10-26 15:21:14.715 +03:00 [INF] Now listening on: http://localhost:5140
+2026-10-26 15:21:14.868 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-26 15:21:14.870 +03:00 [INF] Hosting environment: Development
+2026-10-26 15:21:14.872 +03:00 [INF] Content root path: D:\faculty3\Social Media App - Ma3ak\backend\Ma3ak.Api
+2026-10-26 15:21:19.554 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2026-10-26 15:21:19.882 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 329.1733ms
+2026-10-26 15:21:19.928 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2026-10-26 15:21:19.928 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-26 15:21:19.945 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 17.1254ms
+2026-10-26 15:21:20.002 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 73.8746ms
+2026-10-26 15:21:20.242 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2026-10-26 15:21:20.264 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.5934ms
+2026-10-26 15:21:55.864 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 15:21:55.882 +03:00 [INF] CORS policy execution failed.
+2026-10-26 15:21:55.885 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 15:21:55.895 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 15:21:55.939 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 15:22:00.935 +03:00 [INF] Executed DbCommand (139ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 15:22:01.687 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 15:22:01.704 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 5754.6365ms
+2026-10-26 15:22:01.707 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 15:22:01.721 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 401 null application/json; charset=utf-8 5856.1911ms
+2026-10-26 15:22:11.164 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 15:22:11.171 +03:00 [INF] CORS policy execution failed.
+2026-10-26 15:22:11.172 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 15:22:11.175 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 15:22:11.177 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 15:22:11.275 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 15:22:13.069 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 15:22:13.093 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 15:22:13.108 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 1927.6556ms
+2026-10-26 15:22:13.111 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 15:22:13.113 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 1949.7228ms
+2026-10-26 15:24:07.154 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 15:24:07.160 +03:00 [INF] CORS policy execution failed.
+2026-10-26 15:24:07.161 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 15:24:07.164 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 15:24:07.166 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 15:24:07.196 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 15:24:07.517 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 15:24:07.523 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 15:24:07.526 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 357.0515ms
+2026-10-26 15:24:07.528 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 15:24:07.530 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 376.764ms
+2026-10-26 16:38:48.684 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 16:38:48.689 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:38:48.691 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:38:48.693 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:38:48.702 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:38:49.873 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 16:38:50.209 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:38:50.214 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:38:50.220 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 1514.4935ms
+2026-10-26 16:38:50.223 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:38:50.225 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 1541.2415ms
+2026-10-26 16:39:22.538 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:39:22.544 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:39:22.546 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:39:22.547 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:39:22.555 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:39:22.662 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:39:22.671 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:39:22.675 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:39:22.678 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 120.46ms
+2026-10-26 16:39:22.681 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:39:22.683 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 145.5249ms
+2026-10-26 16:39:27.518 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:39:27.523 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:39:27.525 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:39:27.528 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:39:27.530 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:39:27.537 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:39:27.541 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 16:39:27.545 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 11.9181ms
+2026-10-26 16:39:27.547 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:39:27.549 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 401 null application/json; charset=utf-8 30.838ms
+2026-10-26 16:40:42.023 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 16:40:42.029 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:40:42.030 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:40:42.032 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:40:42.034 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:40:42.041 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 16:40:42.353 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:40:42.358 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:40:42.361 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 323.4002ms
+2026-10-26 16:40:42.363 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:40:42.365 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 342.1631ms
+2026-10-26 16:41:08.296 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:41:08.302 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:41:08.303 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:41:08.305 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:41:08.307 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:41:08.314 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:41:08.321 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:41:08.325 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:41:08.327 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 17.186ms
+2026-10-26 16:41:08.330 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:41:08.332 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 36.1163ms
+2026-10-26 16:44:28.089 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:44:28.095 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:44:28.097 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:44:28.099 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:44:28.102 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:44:28.111 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:44:28.115 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 16:44:28.118 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 11.9962ms
+2026-10-26 16:44:28.120 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:44:28.122 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 401 null application/json; charset=utf-8 32.7261ms
+2026-10-26 16:45:50.778 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2026-10-26 16:45:50.797 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 19.3806ms
+2026-10-26 16:45:50.862 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-26 16:45:50.868 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2026-10-26 16:45:50.868 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 6.142ms
+2026-10-26 16:45:50.881 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 12.9391ms
+2026-10-26 16:45:51.151 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2026-10-26 16:45:51.163 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.3598ms
+2026-10-26 16:46:20.015 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 16:46:20.021 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:46:20.023 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:46:20.025 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:46:20.027 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:46:20.034 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 16:46:20.342 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 16:46:20.345 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 315.0754ms
+2026-10-26 16:46:20.347 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:46:20.350 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 401 null application/json; charset=utf-8 334.1816ms
+2026-10-26 16:46:28.304 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 16:46:28.309 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:46:28.311 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:46:28.312 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:46:28.315 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:46:28.321 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 16:46:28.635 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:46:28.640 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:46:28.643 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 326.4257ms
+2026-10-26 16:46:28.646 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:46:28.648 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 344.2004ms
+2026-10-26 16:46:51.595 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:46:51.601 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:46:51.602 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:46:51.604 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:46:51.606 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:46:51.614 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:46:51.621 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:46:51.624 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:46:51.627 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 18.2905ms
+2026-10-26 16:46:51.630 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:46:51.632 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 36.9011ms
+2026-10-26 16:47:43.794 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:47:43.799 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:47:43.801 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:47:43.803 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:47:43.805 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:47:43.812 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:47:43.820 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:47:43.824 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:47:43.826 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 18.0728ms
+2026-10-26 16:47:43.829 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:47:43.831 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 36.9129ms
+2026-10-26 16:48:13.063 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:48:13.071 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:48:13.073 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:48:13.075 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:48:13.077 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:48:13.084 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:48:13.092 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:48:13.096 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:48:13.098 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 17.7949ms
+2026-10-26 16:48:13.101 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:48:13.102 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 39.114ms
+2026-10-26 16:48:22.098 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:48:22.103 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:48:22.105 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:48:22.107 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:48:22.109 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:48:22.115 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:48:22.119 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 16:48:22.122 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 10.3429ms
+2026-10-26 16:48:22.124 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:48:22.126 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 401 null application/json; charset=utf-8 28ms
+2026-10-26 16:48:37.016 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 16:48:37.021 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:48:37.023 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:48:37.025 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:48:37.027 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:48:37.033 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 16:48:37.344 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:48:37.348 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:48:37.351 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 321.4083ms
+2026-10-26 16:48:37.353 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:48:37.355 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 338.9103ms
+2026-10-26 16:49:07.330 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:49:07.335 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:49:07.337 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:49:07.339 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:49:07.341 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:49:07.347 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:49:07.355 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:49:07.359 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:49:07.361 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 17.9278ms
+2026-10-26 16:49:07.364 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:49:07.366 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 35.8812ms
+2026-10-26 16:49:50.002 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:49:50.008 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:49:50.009 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:49:50.011 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:49:50.013 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:49:50.021 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:49:50.028 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:49:50.031 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:49:50.033 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 17.0244ms
+2026-10-26 16:49:50.035 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:49:50.037 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 35.2338ms
+2026-10-26 16:52:35.380 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2026-10-26 16:52:35.395 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 15.5407ms
+2026-10-26 16:52:35.476 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-26 16:52:35.477 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2026-10-26 16:52:35.483 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 6.5712ms
+2026-10-26 16:52:35.495 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.7351ms
+2026-10-26 16:52:35.612 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2026-10-26 16:52:35.623 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 10.5563ms
+2026-10-26 16:52:58.668 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 16:52:58.673 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:52:58.674 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:52:58.676 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:52:58.678 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:52:58.685 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 16:52:59.004 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:52:59.009 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:52:59.012 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 331.5002ms
+2026-10-26 16:52:59.014 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 16:52:59.017 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 349.0096ms
+2026-10-26 16:53:21.020 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:53:21.025 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:53:21.027 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:53:21.029 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:53:21.031 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:53:21.038 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:53:21.044 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:53:21.049 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:53:21.051 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 17.8305ms
+2026-10-26 16:53:21.054 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:53:21.057 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 37.0793ms
+2026-10-26 16:54:11.743 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 16:54:11.748 +03:00 [INF] CORS policy execution failed.
+2026-10-26 16:54:11.750 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 16:54:11.752 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:54:11.754 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 16:54:11.761 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 16:54:11.770 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 16:54:11.775 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 16:54:11.777 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 19.9393ms
+2026-10-26 16:54:11.780 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 16:54:11.782 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 38.7394ms
+2026-10-26 17:42:14.551 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 17:42:14.556 +03:00 [INF] CORS policy execution failed.
+2026-10-26 17:42:14.558 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 17:42:14.559 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:42:14.561 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:42:15.713 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 17:42:15.724 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 17:42:15.728 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 17:42:15.731 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 1166.9739ms
+2026-10-26 17:42:15.733 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:42:15.735 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 1184.2769ms
+2026-10-26 17:43:39.788 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 372
+2026-10-26 17:43:39.794 +03:00 [INF] CORS policy execution failed.
+2026-10-26 17:43:39.795 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 17:43:39.798 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:43:39.804 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:43:39.822 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 17:43:39.826 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 18.0821ms
+2026-10-26 17:43:39.828 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:43:39.830 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 401 null application/json; charset=utf-8 41.7351ms
+2026-10-26 17:43:50.247 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 17:43:50.254 +03:00 [INF] CORS policy execution failed.
+2026-10-26 17:43:50.256 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 17:43:50.258 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 17:43:50.265 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:43:50.276 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 17:43:50.594 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 17:43:50.599 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 17:43:50.604 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 336.0921ms
+2026-10-26 17:43:50.607 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 17:43:50.609 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 361.3702ms
+2026-10-26 17:44:21.986 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 17:44:21.991 +03:00 [INF] CORS policy execution failed.
+2026-10-26 17:44:21.993 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 17:44:21.995 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:44:21.997 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:44:22.003 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 17:44:22.010 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 17:44:22.014 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 17:44:22.016 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 16.8201ms
+2026-10-26 17:44:22.019 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:44:22.021 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 34.7182ms
+2026-10-26 17:44:47.413 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 17:44:47.420 +03:00 [INF] CORS policy execution failed.
+2026-10-26 17:44:47.421 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 17:44:47.423 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:44:47.426 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:44:47.433 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 17:44:47.440 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 17:44:47.443 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 17:44:47.446 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 16.4219ms
+2026-10-26 17:44:47.448 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:44:47.450 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 36.5034ms
+2026-10-26 17:45:46.454 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 17:45:46.459 +03:00 [INF] CORS policy execution failed.
+2026-10-26 17:45:46.461 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 17:45:46.463 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:45:46.465 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:45:46.471 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 17:45:46.478 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 17:45:46.481 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 17:45:46.483 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 15.6026ms
+2026-10-26 17:45:46.486 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:45:46.488 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 200 null application/json; charset=utf-8 33.5788ms
+2026-10-26 17:46:06.131 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 17:46:06.136 +03:00 [INF] CORS policy execution failed.
+2026-10-26 17:46:06.137 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 17:46:06.139 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:46:06.141 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:46:06.147 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 17:46:06.151 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 17:46:06.153 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 9.7681ms
+2026-10-26 17:46:06.156 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:46:06.158 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 401 null application/json; charset=utf-8 26.8502ms
+2026-10-26 17:46:54.733 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - application/json 371
+2026-10-26 17:46:54.738 +03:00 [INF] CORS policy execution failed.
+2026-10-26 17:46:54.740 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 17:46:54.742 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:46:54.744 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:46:54.751 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 17:46:54.755 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 17:46:54.757 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 10.0336ms
+2026-10-26 17:46:54.760 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 17:46:54.761 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/refresh-token - 401 null application/json; charset=utf-8 28.7253ms
+2026-10-26 17:47:22.604 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2026-10-26 17:47:22.618 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 14.488ms
+2026-10-26 17:47:22.696 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-26 17:47:22.696 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2026-10-26 17:47:22.702 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 6.017ms
+2026-10-26 17:47:22.713 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.0639ms
+2026-10-26 17:47:22.834 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2026-10-26 17:47:22.844 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 10.8241ms
+2026-10-26 17:57:12.635 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/login - null 0
+2026-10-26 17:57:12.641 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 17:57:12.643 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:57:12.650 +03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-10-26 17:57:12.680 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 33.4373ms
+2026-10-26 17:57:12.683 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 17:57:12.685 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/login - 415 null application/problem+json; charset=utf-8 49.3802ms
+2026-10-26 17:58:13.162 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/login - application/json 62
+2026-10-26 17:58:13.166 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 17:58:13.169 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 17:58:14.347 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 17:58:14.669 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 17:58:14.674 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 17:58:14.676 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 1504.352ms
+2026-10-26 17:58:14.679 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 17:58:14.681 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/login - 200 null application/json; charset=utf-8 1519.2422ms
+2026-10-26 18:00:29.082 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/refres-token - application/json 374
+2026-10-26 18:00:29.087 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/refres-token - 404 0 null 5.3817ms
+2026-10-26 18:00:29.093 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7067/api/auth/refres-token, Response status code: 404
+2026-10-26 18:00:48.574 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/refresh-token - application/json 374
+2026-10-26 18:00:48.579 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:00:48.581 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 18:00:48.589 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 18:00:48.597 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 18:00:48.602 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 18:00:48.604 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 19.9235ms
+2026-10-26 18:00:48.606 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:00:48.608 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/refresh-token - 200 null application/json; charset=utf-8 34.2183ms
+2026-10-26 18:01:10.931 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/refresh-token - application/json 371
+2026-10-26 18:01:10.935 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:01:10.937 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 18:01:10.944 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 18:01:10.948 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 18:01:10.950 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 9.2869ms
+2026-10-26 18:01:10.952 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:01:10.954 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/refresh-token - 401 null application/json; charset=utf-8 22.8311ms
+2026-10-26 18:01:23.224 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/login - application/json 62
+2026-10-26 18:01:23.229 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 18:01:23.231 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 18:01:23.237 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 18:01:23.551 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 18:01:23.556 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 18:01:23.558 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 324.4573ms
+2026-10-26 18:01:23.560 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 18:01:23.562 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/login - 200 null application/json; charset=utf-8 338.4508ms
+2026-10-26 18:01:51.915 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/refresh-token - application/json 374
+2026-10-26 18:01:51.920 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:01:51.922 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 18:01:51.929 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 18:01:51.936 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 18:01:51.940 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 18:01:51.943 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 17.5964ms
+2026-10-26 18:01:51.946 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:01:51.947 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/refresh-token - 200 null application/json; charset=utf-8 32.1634ms
+2026-10-26 18:02:08.911 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/refresh-token - application/json 374
+2026-10-26 18:02:08.915 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:02:08.917 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 18:02:08.923 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 18:02:08.931 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 18:02:08.935 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 18:02:08.937 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 16.3221ms
+2026-10-26 18:02:08.940 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:02:08.942 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/refresh-token - 200 null application/json; charset=utf-8 31.3807ms
+2026-10-26 18:02:25.164 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/refresh-token - application/json 374
+2026-10-26 18:02:25.168 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:02:25.170 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 18:02:25.178 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 18:02:25.186 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 18:02:25.189 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 18:02:25.191 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 17.6543ms
+2026-10-26 18:02:25.194 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:02:25.196 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/refresh-token - 200 null application/json; charset=utf-8 31.7234ms
+2026-10-26 18:02:36.964 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/refresh-token - application/json 374
+2026-10-26 18:02:36.968 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:02:36.970 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 18:02:36.976 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__requestDto_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__requestDto_RefreshToken_0
+2026-10-26 18:02:36.984 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 18:02:36.987 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 18:02:36.989 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 16.2973ms
+2026-10-26 18:02:36.992 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:02:36.994 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/refresh-token - 200 null application/json; charset=utf-8 29.6162ms
+2026-10-26 18:26:51.566 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/refresh-token - application/json 378
+2026-10-26 18:26:51.572 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:26:51.574 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(Ma3ak.Api.DTOs.Users.TokenRequestDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 18:26:51.580 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 18:26:51.583 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api) in 4.5304ms
+2026-10-26 18:26:51.585 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.RefreshToken (Ma3ak.Api)'
+2026-10-26 18:26:51.587 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/refresh-token - 401 null application/json; charset=utf-8 20.6981ms
+2026-10-26 18:58:00.366 +03:00 [INF] Now listening on: https://localhost:7067
+2026-10-26 18:58:00.426 +03:00 [INF] Now listening on: http://localhost:5140
+2026-10-26 18:58:00.570 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-26 18:58:00.573 +03:00 [INF] Hosting environment: Development
+2026-10-26 18:58:00.575 +03:00 [INF] Content root path: D:\faculty3\Social Media App - Ma3ak\backend\Ma3ak.Api
+2026-10-26 18:58:04.006 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2026-10-26 18:58:04.308 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 304.6695ms
+2026-10-26 18:58:04.360 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-26 18:58:04.360 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2026-10-26 18:58:04.373 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 12.6448ms
+2026-10-26 18:58:04.413 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 53.575ms
+2026-10-26 18:58:04.481 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2026-10-26 18:58:04.507 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.7769ms
+2026-10-26 19:06:44.563 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 19:06:44.582 +03:00 [INF] CORS policy execution failed.
+2026-10-26 19:06:44.585 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 19:06:44.592 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 19:06:44.636 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 19:06:47.762 +03:00 [INF] Executed DbCommand (58ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 19:06:48.753 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 19:06:48.789 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 19:06:48.816 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 4169.6984ms
+2026-10-26 19:06:48.820 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 19:06:48.836 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 4273.1403ms
+2026-10-26 19:07:05.114 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/revoke - application/json 68
+2026-10-26 19:07:05.123 +03:00 [INF] CORS policy execution failed.
+2026-10-26 19:07:05.125 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 19:07:05.127 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api)'
+2026-10-26 19:07:05.135 +03:00 [INF] Route matched with {action = "Revoke", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Revoke(Ma3ak.Api.DTOs.RevokeTokenDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 19:07:05.249 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__refreshToken_0
+2026-10-26 19:07:05.259 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 19:07:05.264 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 19:07:05.272 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api) in 133.1488ms
+2026-10-26 19:07:05.275 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api)'
+2026-10-26 19:07:05.277 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/revoke - 200 null application/json; charset=utf-8 162.5707ms
+2026-10-26 19:07:17.477 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/login - application/json 59
+2026-10-26 19:07:17.484 +03:00 [INF] CORS policy execution failed.
+2026-10-26 19:07:17.485 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 19:07:17.487 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 19:07:17.489 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 19:07:17.520 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-10-26 19:07:17.845 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 19:07:17.851 +03:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-10-26 19:07:17.853 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 361.5862ms
+2026-10-26 19:07:17.856 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-10-26 19:07:17.858 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/login - 200 null application/json; charset=utf-8 380.7535ms
+2026-10-26 19:07:23.308 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/revoke - application/json 68
+2026-10-26 19:07:23.313 +03:00 [INF] CORS policy execution failed.
+2026-10-26 19:07:23.315 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 19:07:23.317 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api)'
+2026-10-26 19:07:23.319 +03:00 [INF] Route matched with {action = "Revoke", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Revoke(Ma3ak.Api.DTOs.RevokeTokenDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 19:07:23.326 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__refreshToken_0
+2026-10-26 19:07:23.330 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 19:07:23.332 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api) in 10.0145ms
+2026-10-26 19:07:23.334 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api)'
+2026-10-26 19:07:23.337 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/revoke - 400 null application/json; charset=utf-8 29.0524ms
+2026-10-26 19:07:42.905 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/revoke - application/json 68
+2026-10-26 19:07:42.911 +03:00 [INF] CORS policy execution failed.
+2026-10-26 19:07:42.912 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 19:07:42.914 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api)'
+2026-10-26 19:07:42.916 +03:00 [INF] Route matched with {action = "Revoke", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Revoke(Ma3ak.Api.DTOs.RevokeTokenDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 19:07:42.924 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__refreshToken_0
+2026-10-26 19:07:42.932 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-10-26 19:07:42.936 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 19:07:42.938 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api) in 19.1112ms
+2026-10-26 19:07:42.942 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api)'
+2026-10-26 19:07:42.944 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/revoke - 200 null application/json; charset=utf-8 39.0173ms
+2026-10-26 19:07:44.675 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Auth/revoke - application/json 68
+2026-10-26 19:07:44.680 +03:00 [INF] CORS policy execution failed.
+2026-10-26 19:07:44.682 +03:00 [INF] Request origin https://localhost:7067 does not have permission to access the resource.
+2026-10-26 19:07:44.683 +03:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api)'
+2026-10-26 19:07:44.685 +03:00 [INF] Route matched with {action = "Revoke", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Revoke(Ma3ak.Api.DTOs.RevokeTokenDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-10-26 19:07:44.692 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[RefreshToken] = @__refreshToken_0
+2026-10-26 19:07:44.697 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-10-26 19:07:44.699 +03:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api) in 10.5502ms
+2026-10-26 19:07:44.701 +03:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Revoke (Ma3ak.Api)'
+2026-10-26 19:07:44.704 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Auth/revoke - 400 null application/json; charset=utf-8 29.2089ms

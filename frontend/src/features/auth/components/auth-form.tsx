@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { isAxiosError } from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail,
@@ -67,57 +68,34 @@ export function AuthForm({ initialTab = "login" }: AuthFormProps) {
 
     try {
       if (tab === "register") {
-        try {
-          const res = await api.post("/auth/register", {
-            fullName,
-            username,
-            email,
-            password,
-          });
-          const { user, token } = res.data;
-          setAuth(user, token);
-        } catch {
-          setAuth(
-            {
-              id: "usr_" + Math.random().toString(36).substring(2, 9),
-              fullName,
-              username,
-              email,
-              role: "MEMBER",
-            },
-            "demo_token_" + Date.now()
-          );
-        }
-        setSuccessMsg("Account created successfully! Redirecting...");
+        await api.post("/auth/register", {
+          fullName,
+          username,
+          email,
+          password,
+        });
+        setSuccessMsg("Account created successfully! Redirecting to login...");
+        setTimeout(() => {
+          router.push("/auth?tab=login");
+        }, 900);
       } else {
-        try {
-          const res = await api.post("/auth/login", {
-            email,
-            password,
-          });
-          const { user, token } = res.data;
-          setAuth(user, token);
-        } catch {
-          setAuth(
-            {
-              id: "usr_demo",
-              fullName: "Demo User",
-              username: email.split("@")[0] || "demouser",
-              email,
-              role: "MEMBER",
-            },
-            "demo_token_" + Date.now()
-          );
-        }
+        const res = await api.post("/auth/login", {
+          email,
+          password,
+        });
+        const { user, token } = res.data;
+        setAuth(user, token);
         setSuccessMsg("Signed in successfully! Redirecting...");
+        setTimeout(() => {
+          router.push("/feed");
+        }, 900);
       }
-
-      setTimeout(() => {
-        router.push("/feed");
-      }, 900);
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const apiMessage = isAxiosError<{ message?: string }>(err)
+        ? err.response?.data?.message
+        : undefined;
       setErrorMsg(
-        err.response?.data?.message ||
+        apiMessage ||
         "Authentication failed. Please check your credentials."
       );
     } finally {
@@ -400,7 +378,7 @@ export function AuthForm({ initialTab = "login" }: AuthFormProps) {
                 className="w-4 h-4 mt-0.5 rounded border-outline-variant text-primary focus:ring-primary"
               />
               <label htmlFor="terms" className="text-xs text-on-surface-variant select-none leading-tight">
-                I agree to Ma3ak's <a href="#" className="text-primary underline">Guidelines</a> and <a href="#" className="text-primary underline">Privacy</a>.
+                I agree to Ma3ak&apos;s <a href="#" className="text-primary underline">Guidelines</a> and <a href="#" className="text-primary underline">Privacy</a>.
               </label>
             </div>
           )}
@@ -428,7 +406,7 @@ export function AuthForm({ initialTab = "login" }: AuthFormProps) {
       <div className="pt-6 border-t border-outline-variant/30 text-center text-xs text-on-surface-variant">
         {tab === "login" ? (
           <p>
-            Don't have an account yet?{" "}
+            Don&apos;t have an account yet?{" "}
             <button
               type="button"
               onClick={() => {
