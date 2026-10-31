@@ -10,3 +10,11 @@ export interface Post {
   isLiked?: boolean;
   isSaved?: boolean;
 }
+
+export interface ApiPost {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: string;
+  authorName: string;
+}

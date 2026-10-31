@@ -5,18 +5,29 @@ import { Image as ImageIcon, Smile, Send } from "lucide-react";
 import { useAuthStore } from "@/lib/auth-store";
 
 interface CreatePostCardProps {
-  onPostCreated: (content: string) => void;
+  onPostCreated: (content: string) => Promise<void>;
 }
 
 export function CreatePostCard({ onPostCreated }: CreatePostCardProps) {
   const { user } = useAuthStore();
   const [text, setText] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!text.trim()) return;
-    onPostCreated(text.trim());
-    setText("");
+
+    setIsSubmitting(true);
+    setErrorMessage(null);
+    try {
+      await onPostCreated(text.trim());
+      setText("");
+    } catch {
+      setErrorMessage("Unable to publish the post. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -54,13 +65,18 @@ export function CreatePostCard({ onPostCreated }: CreatePostCardProps) {
         </div>
         <button
           type="submit"
-          disabled={!text.trim()}
+          disabled={!text.trim() || isSubmitting}
           className="px-4 py-1.5 rounded-full bg-primary hover:bg-primary-hover text-on-primary text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm disabled:opacity-40"
         >
-          <span>Post</span>
+          <span>{isSubmitting ? "Posting..." : "Post"}</span>
           <Send className="w-3.5 h-3.5" />
         </button>
       </div>
+      {errorMessage && (
+        <p className="text-xs text-rose-500" role="alert">
+          {errorMessage}
+        </p>
+      )}
     </form>
   );
 }
