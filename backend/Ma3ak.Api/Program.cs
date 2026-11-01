@@ -2,6 +2,7 @@
 using Ma3ak.Api.Data;
 using Ma3ak.Api.Middlewares;
 using Ma3ak.Api.Services.Auth;
+using Ma3ak.Api.Services.Comment;
 using Ma3ak.Api.Services.post;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -66,6 +67,7 @@ namespace Ma3ak.Api
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IPostService, PostService>();
+            builder.Services.AddScoped<ICommentService, CommentService>();
 
             var app = builder.Build();
 

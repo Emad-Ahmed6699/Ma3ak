@@ -1,0 +1,180 @@
+2026-11-01 00:12:23.374 +02:00 [INF] User profile is available. Using 'C:\Users\AIO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-11-01 00:12:23.633 +02:00 [INF] Now listening on: https://localhost:7067
+2026-11-01 00:12:23.636 +02:00 [INF] Now listening on: http://localhost:5140
+2026-11-01 00:12:23.784 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-11-01 00:12:23.786 +02:00 [INF] Hosting environment: Development
+2026-11-01 00:12:23.788 +02:00 [INF] Content root path: D:\faculty3\Social Media App - Ma3ak\backend\Ma3ak.Api
+2026-11-01 00:12:24.636 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2026-11-01 00:12:24.873 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 240.158ms
+2026-11-01 00:12:24.968 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2026-11-01 00:12:24.968 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2026-11-01 00:12:24.981 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 12.9773ms
+2026-11-01 00:12:25.021 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.4069ms
+2026-11-01 00:12:25.129 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2026-11-01 00:12:25.152 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.7027ms
+2026-11-01 00:15:30.250 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/login - application/json 62
+2026-11-01 00:15:30.297 +02:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-11-01 00:15:30.338 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-11-01 00:15:33.503 +02:00 [INF] Executed DbCommand (66ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-11-01 00:15:34.407 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-11-01 00:15:34.442 +02:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-11-01 00:15:34.463 +02:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 4115.5131ms
+2026-11-01 00:15:34.467 +02:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-11-01 00:15:34.480 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/login - 200 null application/json; charset=utf-8 4230.8645ms
+2026-11-01 00:15:59.864 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7067/api/posts/1/comments - null null
+2026-11-01 00:15:59.930 +02:00 [INF] Executing endpoint 'CommentsController.GetComments (Ma3ak.Api)'
+2026-11-01 00:15:59.940 +02:00 [INF] Route matched with {action = "GetComments", controller = "Comments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetComments(Int32) on controller CommentsController (Ma3ak.Api).
+2026-11-01 00:16:00.166 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Content], [c].[CreatedAt], [u].[FullName] AS [AuthorName]
+FROM [Comments] AS [c]
+INNER JOIN [Users] AS [u] ON [c].[AuthorId] = [u].[Id]
+WHERE [c].[PostId] = @__postId_0
+2026-11-01 00:16:00.173 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Ma3ak.Api.DTOs.CommentResponseDto, Ma3ak.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-11-01 00:16:00.179 +02:00 [INF] Executed action CommentsController.GetComments (Ma3ak.Api) in 235.8938ms
+2026-11-01 00:16:00.182 +02:00 [INF] Executed endpoint 'CommentsController.GetComments (Ma3ak.Api)'
+2026-11-01 00:16:00.184 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/posts/1/comments - 200 null application/json; charset=utf-8 320.4398ms
+2026-11-01 00:17:24.108 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/posts/1/comments - application/json 32
+2026-11-01 00:17:24.127 +02:00 [INF] Executing endpoint 'CommentsController.AddComment (Ma3ak.Api)'
+2026-11-01 00:17:24.137 +02:00 [INF] Route matched with {action = "AddComment", controller = "Comments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddComment(Int32, Ma3ak.Api.DTOs.CommentCreateDto) on controller CommentsController (Ma3ak.Api).
+2026-11-01 00:17:24.204 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AuthorId], [p].[Content], [p].[CreatedAt], [p].[Title]
+FROM [Posts] AS [p]
+WHERE [p].[Id] = @__p_0
+2026-11-01 00:17:24.335 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 1000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Comments] ([AuthorId], [Content], [CreatedAt], [PostId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2026-11-01 00:17:24.371 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2026-11-01 00:17:24.382 +02:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.CommentResponseDto'.
+2026-11-01 00:17:24.387 +02:00 [INF] Executed action CommentsController.AddComment (Ma3ak.Api) in 245.7787ms
+2026-11-01 00:17:24.389 +02:00 [INF] Executed endpoint 'CommentsController.AddComment (Ma3ak.Api)'
+2026-11-01 00:17:24.392 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/posts/1/comments - 200 null application/json; charset=utf-8 283.9142ms
+2026-11-01 00:17:39.223 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7067/api/posts/1/comments - null null
+2026-11-01 00:17:39.231 +02:00 [INF] Executing endpoint 'CommentsController.GetComments (Ma3ak.Api)'
+2026-11-01 00:17:39.233 +02:00 [INF] Route matched with {action = "GetComments", controller = "Comments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetComments(Int32) on controller CommentsController (Ma3ak.Api).
+2026-11-01 00:17:39.259 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Content], [c].[CreatedAt], [u].[FullName] AS [AuthorName]
+FROM [Comments] AS [c]
+INNER JOIN [Users] AS [u] ON [c].[AuthorId] = [u].[Id]
+WHERE [c].[PostId] = @__postId_0
+2026-11-01 00:17:39.264 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Ma3ak.Api.DTOs.CommentResponseDto, Ma3ak.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-11-01 00:17:39.266 +02:00 [INF] Executed action CommentsController.GetComments (Ma3ak.Api) in 29.9424ms
+2026-11-01 00:17:39.269 +02:00 [INF] Executed endpoint 'CommentsController.GetComments (Ma3ak.Api)'
+2026-11-01 00:17:39.271 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/posts/1/comments - 200 null application/json; charset=utf-8 47.9339ms
+2026-11-01 00:17:53.980 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/posts/1/comments - application/json 28
+2026-11-01 00:17:53.986 +02:00 [INF] Executing endpoint 'CommentsController.AddComment (Ma3ak.Api)'
+2026-11-01 00:17:53.988 +02:00 [INF] Route matched with {action = "AddComment", controller = "Comments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddComment(Int32, Ma3ak.Api.DTOs.CommentCreateDto) on controller CommentsController (Ma3ak.Api).
+2026-11-01 00:17:53.997 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AuthorId], [p].[Content], [p].[CreatedAt], [p].[Title]
+FROM [Posts] AS [p]
+WHERE [p].[Id] = @__p_0
+2026-11-01 00:17:54.006 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 1000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Comments] ([AuthorId], [Content], [CreatedAt], [PostId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2026-11-01 00:17:54.012 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2026-11-01 00:17:54.016 +02:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.CommentResponseDto'.
+2026-11-01 00:17:54.019 +02:00 [INF] Executed action CommentsController.AddComment (Ma3ak.Api) in 27.4227ms
+2026-11-01 00:17:54.022 +02:00 [INF] Executed endpoint 'CommentsController.AddComment (Ma3ak.Api)'
+2026-11-01 00:17:54.023 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/posts/1/comments - 200 null application/json; charset=utf-8 43.0598ms
+2026-11-01 00:18:01.387 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7067/api/posts/1/comments - null null
+2026-11-01 00:18:01.393 +02:00 [INF] Executing endpoint 'CommentsController.GetComments (Ma3ak.Api)'
+2026-11-01 00:18:01.396 +02:00 [INF] Route matched with {action = "GetComments", controller = "Comments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetComments(Int32) on controller CommentsController (Ma3ak.Api).
+2026-11-01 00:18:01.404 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Content], [c].[CreatedAt], [u].[FullName] AS [AuthorName]
+FROM [Comments] AS [c]
+INNER JOIN [Users] AS [u] ON [c].[AuthorId] = [u].[Id]
+WHERE [c].[PostId] = @__postId_0
+2026-11-01 00:18:01.409 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Ma3ak.Api.DTOs.CommentResponseDto, Ma3ak.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-11-01 00:18:01.413 +02:00 [INF] Executed action CommentsController.GetComments (Ma3ak.Api) in 13.4886ms
+2026-11-01 00:18:01.415 +02:00 [INF] Executed endpoint 'CommentsController.GetComments (Ma3ak.Api)'
+2026-11-01 00:18:01.418 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/posts/1/comments - 200 null application/json; charset=utf-8 30.6618ms
+2026-11-01 00:19:05.192 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7067/api/comments/2 - null null
+2026-11-01 00:19:05.203 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-11-01 00:19:05.215 +02:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-11-01 00:19:05.218 +02:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2026-11-01 00:19:05.221 +02:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2026-11-01 00:19:05.223 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/comments/2 - 405 0 null 30.7812ms
+2026-11-01 00:20:05.544 +02:00 [INF] Request starting HTTP/2 DELETE https://localhost:7067/api/comments/2 - null null
+2026-11-01 00:20:05.550 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-11-01 00:20:05.553 +02:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-11-01 00:20:05.556 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-11-01 00:20:05.564 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-11-01 00:20:05.567 +02:00 [INF] Request finished HTTP/2 DELETE https://localhost:7067/api/comments/2 - 401 0 null 22.9897ms
+2026-11-01 00:24:15.100 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/auth/login - application/json 62
+2026-11-01 00:24:15.108 +02:00 [INF] Executing endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-11-01 00:24:15.110 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Ma3ak.Api.DTOs.Users.UserLoginDto) on controller Ma3ak.Api.Controllers.AuthController (Ma3ak.Api).
+2026-11-01 00:24:15.239 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__loginDto_Email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AvatarUrl], [u].[Bio], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[FullName], [u].[IsBanned], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginDto_Email_0
+2026-11-01 00:24:15.565 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiryTime] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-11-01 00:24:15.570 +02:00 [INF] Executing OkObjectResult, writing value of type 'Ma3ak.Api.DTOs.Users.AuthResponseDto'.
+2026-11-01 00:24:15.573 +02:00 [INF] Executed action Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api) in 459.8481ms
+2026-11-01 00:24:15.575 +02:00 [INF] Executed endpoint 'Ma3ak.Api.Controllers.AuthController.Login (Ma3ak.Api)'
+2026-11-01 00:24:15.578 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/auth/login - 200 null application/json; charset=utf-8 477.383ms
+2026-11-01 00:24:34.287 +02:00 [INF] Request starting HTTP/2 DELETE https://localhost:7067/api/comments/2 - null null
+2026-11-01 00:24:34.293 +02:00 [INF] Executing endpoint 'CommentsController.DeleteComment (Ma3ak.Api)'
+2026-11-01 00:24:34.299 +02:00 [INF] Route matched with {action = "DeleteComment", controller = "Comments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteComment(Int32) on controller CommentsController (Ma3ak.Api).
+2026-11-01 00:24:34.323 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[AuthorId], [c].[Content], [c].[CreatedAt], [c].[PostId]
+FROM [Comments] AS [c]
+WHERE [c].[Id] = @__p_0
+2026-11-01 00:24:34.341 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Comments]
+OUTPUT 1
+WHERE [Id] = @p0;
+2026-11-01 00:24:34.350 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-11-01 00:24:34.357 +02:00 [INF] Executed action CommentsController.DeleteComment (Ma3ak.Api) in 55.2357ms
+2026-11-01 00:24:34.360 +02:00 [INF] Executed endpoint 'CommentsController.DeleteComment (Ma3ak.Api)'
+2026-11-01 00:24:34.362 +02:00 [INF] Request finished HTTP/2 DELETE https://localhost:7067/api/comments/2 - 200 null application/json; charset=utf-8 74.7063ms
+2026-11-01 00:24:39.585 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7067/api/posts/1/comments - null null
+2026-11-01 00:24:39.591 +02:00 [INF] Executing endpoint 'CommentsController.GetComments (Ma3ak.Api)'
+2026-11-01 00:24:39.593 +02:00 [INF] Route matched with {action = "GetComments", controller = "Comments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetComments(Int32) on controller CommentsController (Ma3ak.Api).
+2026-11-01 00:24:39.602 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Content], [c].[CreatedAt], [u].[FullName] AS [AuthorName]
+FROM [Comments] AS [c]
+INNER JOIN [Users] AS [u] ON [c].[AuthorId] = [u].[Id]
+WHERE [c].[PostId] = @__postId_0
+2026-11-01 00:24:39.606 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Ma3ak.Api.DTOs.CommentResponseDto, Ma3ak.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-11-01 00:24:39.608 +02:00 [INF] Executed action CommentsController.GetComments (Ma3ak.Api) in 12.2107ms
+2026-11-01 00:24:39.610 +02:00 [INF] Executed endpoint 'CommentsController.GetComments (Ma3ak.Api)'
+2026-11-01 00:24:39.612 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/posts/1/comments - 200 null application/json; charset=utf-8 27.2188ms
